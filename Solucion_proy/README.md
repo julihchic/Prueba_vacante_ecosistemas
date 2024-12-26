@@ -4,6 +4,7 @@ El objetivo de la empresa BATSEJ OPEN FINANCE S.A es tener un procedimiento auto
 - Python
 - SQLite
 - Libreria Pandas
+- Libreria sqlite3
 - Libreria smtplib
 . Libreria email
 - Servidor SMTP para Outlook

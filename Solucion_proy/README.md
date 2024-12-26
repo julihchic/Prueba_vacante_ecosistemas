@@ -17,7 +17,8 @@ El objetivo de la empresa BATSEJ OPEN FINANCE S.A es tener un procedimiento auto
 - `database.sqlite`: Es la base de datos SQLite utilizada.
 
 ## Ejecución
-1. Configurar credenciales en el script `codigo.py`.
+1. Configurar credenciales en el script `exploracion_datos.py`, `codigo.py`.
 2. Ejecutar el script:
    ```bash
+   python exploracion_datos.py
    python codigo.py

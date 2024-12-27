@@ -7,7 +7,7 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 
 # primero establezo la conexion con la database
-conn = sqlite3.connect('database.sqlite')
+conn = sqlite3.connect('Solucion_proy\database.sqlite')
 cursor = conn.cursor()
 
 # fecha de inicio y de fin con mismo formato que me da la fecha de tabla apicall con el rango que me piden (jul-ago)

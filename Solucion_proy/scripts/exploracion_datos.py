@@ -2,7 +2,7 @@ import sqlite3
 import pandas as pd
 
 # primero creo la conexión
-db_path = "database.sqlite" 
+db_path = "Solucion_proy\database.sqlite" 
 conn = sqlite3.connect(db_path)
 
 # para  ver las tablas que hay en ella

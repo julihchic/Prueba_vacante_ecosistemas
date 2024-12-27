@@ -22,3 +22,8 @@ El objetivo de la empresa BATSEJ OPEN FINANCE S.A es tener un procedimiento auto
    ```bash
    python exploracion_datos.py
    python codigo.py
+
+## Resultados
+Al ejecutar el contenido en script se genera:
+- Un archivo de excel llamado resultados_comisiones.xlsx que se puede ver en la carpeta Solucion_proy como `resultados_comisiones.xlsx` .
+- Un correo con los resultados resumidos que se envia al ejecutor.

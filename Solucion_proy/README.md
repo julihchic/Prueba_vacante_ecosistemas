@@ -28,7 +28,7 @@ Al ejecutar el contenido en script se genera:
 - Un archivo de excel llamado resultados_comisiones.xlsx que se puede ver en la carpeta Solucion_proy como `resultados_comisiones.xlsx` .
 - Un correo con los resultados resumidos que se envia al ejecutor.
 
-## Ejemplo del archivo de excel:
+### Ejemplo del archivo de excel:
 
 | Fecha       | Mes       | Nombre del Comercio   | NIT       | Valor Comisión | Valor IVA   | Valor Total    | Correo                          |
 |-------------|-----------|-----------------------|-----------|----------------|-------------|----------------|----------------------------------|

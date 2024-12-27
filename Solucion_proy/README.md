@@ -30,6 +30,14 @@ Al ejecutar el contenido en script se genera:
 
 ## Ejemplo del archivo de excel:
 
-Fecha	   | Mes       | Nombre del Comercio |	  NIT    |	Valor Comisión |  Valor IVA	  | Valor Total  |	      Correo   
+| Fecha       | Mes       | Nombre del Comercio   | NIT       | Valor Comisión | Valor IVA   | Valor Total    | Correo                          |
+|-------------|-----------|-----------------------|-----------|----------------|-------------|----------------|----------------------------------|
+| 2024-12-23  | Diciembre | Zenith Corp.          | 28960112  | 6,285,162.00   | 1,194,180.78 | 7,479,342.78   | zenithcorp.@gemaily.net         |
+| 2024-12-23  | Diciembre | FusionWave Enterprises| 919341007 | 14,048,400.00  | 2,669,196.00 | 16,717,596.00  | fusionwaveenterprises@microfitsof.com |
+| 2024-12-23  | Diciembre | Innovexa Solutions    | 445470636 | 15,205,200.00  | 2,888,988.00 | 18,094,188.00  | innovexasolutions@microfitsof.com |
+| 2024-12-23  | Diciembre | QuantumLeap Inc.      | 198818316 | 30,501,000.00  | 5,795,190.00 | 36,296,190.00  | quantumleapinc.@gemaily.net     |
+| 2024-12-23  | Diciembre | NexaTech Industries   | 452680670 | 8,636,680.00   | 1,640,969.20 | 10,277,649.20  | nexatechindustries@gemaily.net  |
 
-2024-12-23 | Diciembre |   Zenith Corp.      |	28960112 |	6,285,162.00   | 1,194,180.78 |	7,479,342.78 | zenithcorp.@gemaily.net
+---
+
+

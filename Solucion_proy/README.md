@@ -30,5 +30,6 @@ Al ejecutar el contenido en script se genera:
 
 ## Ejemplo del archivo de excel:
 
-Fecha	   | Mes       | Nombre del Comercio |	  NIT    |	Valor Comisión |  Valor IVA	  | Valor Total  |	      Correo
+Fecha	   | Mes       | Nombre del Comercio |	  NIT    |	Valor Comisión |  Valor IVA	  | Valor Total  |	      Correo   
+
 2024-12-23 | Diciembre |   Zenith Corp.      |	28960112 |	6,285,162.00   | 1,194,180.78 |	7,479,342.78 | zenithcorp.@gemaily.net

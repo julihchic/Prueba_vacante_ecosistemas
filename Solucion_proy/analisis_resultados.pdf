@@ -1,0 +1,16 @@
+Analisis de resultados
+
+Durante la realizacion del ejercicio se tuvieron diferentes observaciones, especificadas a continuacion.
+
+Patrones identificados:
+- Los comercios con mayor número de peticiones tienen una relación directa con las comisiones generadas.
+- El porcentaje de peticiones fallidas varía ligeramente entre comercios, con un promedio del 10-15%.
+
+Posibles Mejoras
+Implementar una validación más robusta para asegurar la calidad de los datos ingresados en las tablas.
+Agregar un sistema de alertas para comercios con tasas altas de peticiones fallidas.
+Automatizar el envío de reportes periódicos.
+
+Extensiones Futuras
+Incluir métricas adicionales como tasas de conversión o análisis por categoría de comercio.
+Integrar visualizaciones gráficas de los resultados en el archivo Excel o en un informe PDF.

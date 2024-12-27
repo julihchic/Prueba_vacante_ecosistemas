@@ -27,3 +27,8 @@ El objetivo de la empresa BATSEJ OPEN FINANCE S.A es tener un procedimiento auto
 Al ejecutar el contenido en script se genera:
 - Un archivo de excel llamado resultados_comisiones.xlsx que se puede ver en la carpeta Solucion_proy como `resultados_comisiones.xlsx` .
 - Un correo con los resultados resumidos que se envia al ejecutor.
+
+## Ejemplo del archivo de excel:
+
+Fecha	   | Mes       | Nombre del Comercio |	  NIT    |	Valor Comisión |  Valor IVA	  | Valor Total  |	      Correo
+2024-12-23 | Diciembre |   Zenith Corp.      |	28960112 |	6,285,162.00   | 1,194,180.78 |	7,479,342.78 | zenithcorp.@gemaily.net

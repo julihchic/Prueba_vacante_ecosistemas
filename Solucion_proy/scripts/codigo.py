@@ -11,17 +11,17 @@ conn = sqlite3.connect('database.sqlite')
 cursor = conn.cursor()
 
 # fecha de inicio y de fin con mismo formato que me da la fecha de tabla apicall con el rango que me piden (jul-ago)
-start_date = '2024-07-01 00:00:00'
-end_date = '2024-08-31 23:59:59'
+fecha_inicio = '2024-07-01 00:00:00'
+fecha_fin = '2024-08-31 23:59:59'
 
 # cfiltro las peticiones activas en las fechas indicadas
 cursor.execute('''
-SELECT commerce_id, COUNT(*) AS successful_requests, 
-       SUM(CASE WHEN ask_status = 'Unsuccessful' THEN 1 ELSE 0 END) AS failed_requests
+SELECT commerce_id, COUNT(*) AS peticiones_exitosas, 
+       SUM(CASE WHEN ask_status = 'Unsuccessful' THEN 1 ELSE 0 END) AS peticiones_fallidas
 FROM apicall
 WHERE date_api_call BETWEEN ? AND ?
 GROUP BY commerce_id
-''', (start_date, end_date))
+''', (fecha_inicio, fecha_fin))
 
 # resultadis
 rows = cursor.fetchall()
@@ -34,10 +34,10 @@ else:
     for row in rows:
         print(f'Comercio: {row[0]}, Peticiones Exitosas: {row[1]}, Peticiones Fallidas: {row[2]}')
 
-        # creo una logica para el calculo de las comisines
+        # logica para el calculo de las comisines
         commerce_id = row[0]
-        successful_requests = row[1]
-        failed_requests = row[2]
+        peticiones_exitosas = row[1]
+        peticiones_fallidas = row[2]
         
         # saco la info del comercio
         cursor.execute('''
@@ -54,52 +54,52 @@ else:
             # creo condicionales segun se indicó en el pdf
             if commerce_name == "Innovexa Solutions":
                 # comisión fija de $300 por petición buena + IVA
-                commission_per_request = 300
-                total_commission = commission_per_request * successful_requests
+                comision_por_peticion = 300
+                comision_total = comision_por_peticion * peticiones_exitosas
             elif commerce_name == "NexaTech Industries":
                 # comisión variable según rango de peticiones
-                if successful_requests <= 10000:
-                    commission_per_request = 250
-                elif successful_requests <= 20000:
-                    commission_per_request = 200
+                if peticiones_exitosas <= 10000:
+                    comision_por_peticion = 250
+                elif peticiones_exitosas <= 20000:
+                    comision_por_peticion = 200
                 else:
-                    commission_per_request = 170
-                total_commission = commission_per_request * successful_requests
+                    comision_por_peticion = 170
+                comision_total = comision_por_peticion * peticiones_exitosas
             elif commerce_name == "QuantumLeap Inc.":
                 # comisión fija de $600 por petición buena + IVA
-                commission_per_request = 600
-                total_commission = commission_per_request * successful_requests
+                comision_por_peticion = 600
+                comision_total = comision_por_peticion * peticiones_exitosas
             elif commerce_name == "Zenith Corp.":
                 # comisión variable según el rango de peticiones
-                if successful_requests <= 22000:
-                    commission_per_request = 250
+                if peticiones_exitosas <= 22000:
+                    comision_por_peticion = 250
                 else:
-                    commission_per_request = 130
-                total_commission = commission_per_request * successful_requests
+                    comision_por_peticion = 130
+                comision_total = comision_por_peticion * peticiones_exitosas
                 # condicion de 5% de descuento (más de 6.000 peticiones fallidas)
-                if failed_requests > 6000:
-                    total_commission *= 0.95 
+                if peticiones_fallidas > 6000:
+                    comision_total *= 0.95 
             elif commerce_name == "FusionWave Enterprises":
                 # Comisión fija de $300 por petición buena + IVA
-                commission_per_request = 300
-                total_commission = commission_per_request * successful_requests
+                comision_por_peticion = 300
+                comision_total = comision_por_peticion * peticiones_exitosas
                 # condición de 5% de descuento (entre 2.500 y 4.500 peticiones fallidas)
-                if 2500 <= failed_requests <= 4500:
-                    total_commission *= 0.95 
+                if 2500 <= peticiones_fallidas <= 4500:
+                    comision_total *= 0.95 
                 # condicion de 8% de descuento (más de 4.500 peticiones fallidas)
-                elif failed_requests > 4500:
-                    total_commission *= 0.92
+                elif peticiones_fallidas > 4500:
+                    comision_total *= 0.92
             else:
-                total_commission = 0
+                comision_total = 0
 
             # Ahora se calcula el IVA de 19%
-            iva = total_commission * 0.19
-            total_with_iva = total_commission + iva
+            iva = comision_total * 0.19
+            total_con_iva = comision_total + iva
 
             # Muestro resultados
-            print(f'Comisión total: {total_commission} COP')
+            print(f'Comisión total: {comision_total} COP')
             print(f'IVA: {iva} COP')
-            print(f'Total con IVA: {total_with_iva} COP\n')
+            print(f'Total con IVA: {total_con_iva} COP\n')
 
             # Guardo resultados en un DF
             data = {
@@ -107,9 +107,9 @@ else:
                 'Mes': [datetime.now().strftime('%B')],
                 'Nombre': [commerce_name],
                 'Nit': [commerce_nit],
-                'Valor_Comision': [total_commission],
+                'Valor_Comision': [comision_total],
                 'Valor_Iva': [iva],
-                'Valor_Total': [total_with_iva],
+                'Valor_Total': [total_con_iva],
                 'Correo': [commerce_email]
             }
 
@@ -133,47 +133,47 @@ comercios = [
 df_comercios = pd.DataFrame(comercios)
 
 # tabla htnl
-html_table = df_comercios.to_html(index=False, header=True)
+tabla_html = df_comercios.to_html(index=False, header=True)
 
 # caracteristicas del corre0
-sender_email = "bot@dominio.com"
-receiver_email = "ejecutor@dominio.com"  
+envia_email = "bot@dominio.com"
+recibe_email = "ejecutor@dominio.com"  
 smtp_server = "smtp.outlook.com"
 smtp_port = 587
-password = "bot_clave"  
+clave = "bot_clave"  
 
 # cabeceras del correo
-message = MIMEMultipart()
-message["From"] = sender_email
-message["To"] = receiver_email
-message["Subject"] = "Comisiones y Resultados del Mes"
+mensaje = MIMEMultipart()
+mensaje["From"] = envia_email
+mensaje["To"] = recibe_email
+mensaje["Subject"] = "Comisiones y Resultados del Mes"
 
 # contenido del mensaje con la tabla
-body = f"""
+cuerpo_msj = f"""
 A quien pueda interesar,
 
 Adjunto los resultados de las comisiones y los valores asociados para el mes de julio y agosto de 2024. Les comparto un resumen en la siguiente tabla.
 
-{html_table}
+{tabla_html}
 
 Saludos,
 BATSEJ OPEN FINANCE S.A
 """
-message.attach(MIMEText(body, "html", _charset="utf-8")) 
+mensaje.attach(MIMEText(cuerpo_msj, "html", _charset="utf-8")) 
 
 # adjunto el excel en el correo
-output_file = "resultados_comisiones.xlsx"
-with open(output_file, "rb") as attachment:
-    part = MIMEApplication(attachment.read(), Name=output_file)
-    part['Content-Disposition'] = f'attachment; filename="{output_file}"'
-    message.attach(part)
+archivo_excel = "resultados_comisiones.xlsx"
+with open(archivo_excel, "rb") as attachment:
+    part = MIMEApplication(attachment.read(), Name=archivo_excel)
+    part['Content-Disposition'] = f'attachment; filename="{archivo_excel}"'
+    mensaje.attach(part)
 
 # lo envío
 try:
     with smtplib.SMTP(smtp_server, smtp_port) as server:
         server.starttls()
-        server.login(sender_email, password)
-        server.sendmail(sender_email, receiver_email, message.as_string())
+        server.login(envia_email, clave)
+        server.sendmail(envia_email, recibe_email, mensaje.as_string())
     print("Correo enviado correctamente.")
 except Exception as e:
     print(f"Error al enviar el correo: {e}")
@@ -182,6 +182,6 @@ except Exception as e:
 cursor.close()
 conn.close()
 
-print("Proceso finalizado.")
+print("Proceso finalizado")
 
 

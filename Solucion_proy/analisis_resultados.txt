@@ -7,7 +7,7 @@ Patrones identificados:
 - El porcentaje de peticiones fallidas varía ligeramente entre empresas, con un promedio del 10-15%.
 
 Sugerencias:
-Implementar más validaciones para garantizar la calidad de los datos que se ingresan a las tablas.
-Generar alertas para las empresas con mas peticiones fallidas.
-Crear automatizaciones para el envio de reportes periódicos.
-Incluir métricas que permitan un analisis más profundo como tasas de conversion por empresas.
+- Implementar más validaciones para garantizar la calidad de los datos que se ingresan a las tablas.
+- Generar alertas para las empresas con mas peticiones fallidas.
+- Crear automatizaciones para el envio de reportes periódicos.
+- Incluir métricas que permitan un analisis más profundo como tasas de conversion por empresas.

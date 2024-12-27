@@ -15,6 +15,7 @@ El objetivo de la empresa BATSEJ OPEN FINANCE S.A es tener un procedimiento auto
     - codigo.py: Aquí esta el codigo solucion, donde se ve filtro inicial, procedimineto para calcular las comisiones, procedimiento para crear el archivo de excel y tambien el envío del correo.
 - `resultados_comisiones.xlsx`: Este es el archivo generado con el resumen de las comisiones.
 - `database.sqlite`: Es la base de datos SQLite utilizada.
+- `analisis_resultados.txt`: Se dan algunas observaciones sobre lo encontrado durante la ejecucion del proyecto.
 
 ## Ejecución
 1. Configurar credenciales en el script `exploracion_datos.py`, `codigo.py`.
